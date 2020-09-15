@@ -1,17 +1,11 @@
 ﻿using UnityEngine;
 
-public class GoldManager : MonoBehaviour {
-    public static GoldManager Instance;
-
+public class GoldManager : Singleton<GoldManager> {
     public int CurrentGold { get; set; }
 
     [SerializeField] private int testGold = 0;
 
     private readonly string GOLD_KEY = "GoldKey";
-
-    private void Awake() {
-        Instance = this;
-    }
 
     private void Start() {
         LoadGold();

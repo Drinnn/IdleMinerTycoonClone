@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShaftManager : MonoBehaviour {
-    public static ShaftManager Instance;
-
+public class ShaftManager : Singleton<ShaftManager> {
     public int NewShaftCost => newShaftCost;
 
     [SerializeField] private Shaft shaftPrefab;
@@ -13,10 +11,6 @@ public class ShaftManager : MonoBehaviour {
 
     [Header("Shaft")]
     [SerializeField] private List<Shaft> shafts;
-
-    private void Awake() {
-        Instance = this;
-    }
 
     public void AddShaft() {
         Transform lastShaft = shafts[0].transform;
