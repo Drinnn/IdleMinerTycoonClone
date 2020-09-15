@@ -20,8 +20,6 @@ public class ShaftMiner : BaseMiner {
     }
 
     protected override void DepositGold() {
-        CurrentShaft.CurrentDeposit.DepositGold(CurrentGold);
-
         CurrentGold = 0;
         ChangeGoal();
         Rotate(1);
