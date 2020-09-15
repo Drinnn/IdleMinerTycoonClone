@@ -2,6 +2,11 @@
 using TMPro;
 
 public class ShaftUI : MonoBehaviour {
+
+    [Header("Buttons")]
+    [SerializeField] private GameObject buyNewShaftButton;
+
+    [Header("Texts")]
     [SerializeField] private TextMeshProUGUI currentGoldText;
     [SerializeField] private TextMeshProUGUI currentLevelText;
 
@@ -23,6 +28,14 @@ public class ShaftUI : MonoBehaviour {
 
     private void Update() {
         currentGoldText.SetText(_shaft.CurrentDeposit.CurrentGold.ToString());
+    }
+
+    public void BuyNewShaft() {
+        if (GoldManager.Instance.CurrentGold >= ShaftManager.Instance.NewShaftCost) {
+            GoldManager.Instance.RemoveGold(ShaftManager.Instance.NewShaftCost);
+            ShaftManager.Instance.AddShaft();
+            buyNewShaftButton.SetActive(false);
+        }
     }
 
     private void UpgradeShaft(BaseUpgrade upgrade, int currentLevel) {
