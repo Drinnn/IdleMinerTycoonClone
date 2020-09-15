@@ -1038,6 +1038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGoldText: {fileID: 130446197}
+  currentLevelText: {fileID: 1270371877}
 --- !u!114 &1584300665
 MonoBehaviour:
   m_ObjectHideFlags: 0
