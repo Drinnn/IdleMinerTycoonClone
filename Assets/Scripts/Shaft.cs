@@ -29,8 +29,11 @@ public class Shaft : MonoBehaviour {
         CreateDeposit();
     }
 
-    private void CreateMiner() {
+    public void CreateMiner() {
         ShaftMiner newMiner = Instantiate(minerPrefab, depositLocation.position, Quaternion.identity);
+
+        if (_miners.Count > 0)
+            EqualizeNewMiner(newMiner);
 
         _miners.Add(newMiner);
 
@@ -43,5 +46,11 @@ public class Shaft : MonoBehaviour {
     private void CreateDeposit() {
         CurrentDeposit = Instantiate(depositPrefab, depositInstantiationLocation.position, Quaternion.identity);
         CurrentDeposit.transform.SetParent(depositInstantiationLocation);
+    }
+
+    private void EqualizeNewMiner(ShaftMiner newMiner) {
+        newMiner.CollectCapacity = _miners[0].CollectCapacity;
+        newMiner.CollectPerSecond = _miners[0].CollectPerSecond;
+        newMiner.MoveSpeed = _miners[0].MoveSpeed;
     }
 }
