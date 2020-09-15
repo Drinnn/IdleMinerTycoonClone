@@ -8,11 +8,14 @@ public class BaseMiner : MonoBehaviour {
     public float CollectPerSecond { get; set; }
     public bool IsTimeToCollect { get; set; }
 
-    private float _moveSpeed = 5f;
-    private int _initialCollectCapacity = 200;
-    private float _goldCollectPerSecond = 50f;
+    protected Animator _animator;
+
+    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private int _initialCollectCapacity = 200;
+    [SerializeField] private float _goldCollectPerSecond = 50f;
 
     private void Awake() {
+        _animator = GetComponent<Animator>();
         CollectCapacity = _initialCollectCapacity;
         CollectPerSecond = _goldCollectPerSecond;
         IsTimeToCollect = true;

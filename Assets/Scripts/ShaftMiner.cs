@@ -2,23 +2,10 @@
 using UnityEngine;
 
 public class ShaftMiner : BaseMiner {
-    [SerializeField] private Transform shaftMiningLocation;
-    [SerializeField] private Transform shaftDepositLocation;
+    public Shaft CurrentShaft { get; set; }
 
-    private Animator _animator;
     private int _miningAnimationParameter = Animator.StringToHash("Mining");
     private int _walkingAnimationParameter = Animator.StringToHash("Walking");
-
-
-    private void Start() {
-        _animator = GetComponent<Animator>();
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.M)) {
-            Move(shaftMiningLocation.position);
-        }
-    }
 
     public override void Move(Vector3 newPosition) {
         base.Move(newPosition);
@@ -36,7 +23,7 @@ public class ShaftMiner : BaseMiner {
         CurrentGold = 0;
         ChangeGoal();
         Rotate(1);
-        Move(shaftMiningLocation.position);
+        Move(CurrentShaft.MiningLocation.position);
     }
 
     protected override IEnumerator IECollect(int collectGold, float collectTime) {
@@ -45,6 +32,6 @@ public class ShaftMiner : BaseMiner {
         CurrentGold = collectGold;
         ChangeGoal();
         Rotate(-1);
-        Move(shaftDepositLocation.position);
+        Move(CurrentShaft.DepositLocation.position);
     }
 }
