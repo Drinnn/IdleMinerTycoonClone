@@ -3,6 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 
 public class BaseMiner : MonoBehaviour {
+    public float MoveSpeed { get; set; }
     public int CurrentGold { get; set; }
     public int CollectCapacity { get; set; }
     public float CollectPerSecond { get; set; }
@@ -16,13 +17,15 @@ public class BaseMiner : MonoBehaviour {
 
     private void Awake() {
         _animator = GetComponent<Animator>();
+
+        MoveSpeed = _moveSpeed;
         CollectCapacity = _initialCollectCapacity;
         CollectPerSecond = _goldCollectPerSecond;
         IsTimeToCollect = true;
     }
 
     public virtual void Move(Vector3 newPosition) {
-        transform.DOMove(newPosition, 10 / _moveSpeed).OnComplete((() => {
+        transform.DOMove(newPosition, 10 / MoveSpeed).OnComplete((() => {
             if (IsTimeToCollect)
                 CollectGold();
             else

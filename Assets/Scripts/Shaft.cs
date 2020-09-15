@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Shaft : MonoBehaviour {
 
     public Transform MiningLocation => miningLocation;
     public Transform DepositLocation => depositLocation;
+    public List<ShaftMiner> Miners => _miners;
     public Deposit CurrentDeposit { get; set; }
 
 
@@ -17,16 +19,21 @@ public class Shaft : MonoBehaviour {
     [SerializeField] private Transform depositInstantiationLocation;
 
     private GameObject _minersContainer;
+    private List<ShaftMiner> _miners;
 
 
     private void Start() {
         _minersContainer = new GameObject("Miners");
+        _miners = new List<ShaftMiner>();
         CreateMiner();
         CreateDeposit();
     }
 
     private void CreateMiner() {
         ShaftMiner newMiner = Instantiate(minerPrefab, depositLocation.position, Quaternion.identity);
+
+        _miners.Add(newMiner);
+
         newMiner.transform.SetParent(_minersContainer.transform);
         newMiner.CurrentShaft = this;
 
