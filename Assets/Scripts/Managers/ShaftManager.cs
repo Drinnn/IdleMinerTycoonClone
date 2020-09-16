@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ShaftManager : Singleton<ShaftManager> {
+    public List<Shaft> Shafts => shafts;
     public int NewShaftCost => newShaftCost;
 
     [SerializeField] private Shaft shaftPrefab;
