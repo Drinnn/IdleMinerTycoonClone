@@ -27,6 +27,7 @@ public class ElevatorMiner : BaseMiner {
     protected override void CollectGold() {
         if (!_currentDeposit.CanCollectGold() && _currentShaftIndex == ShaftManager.Instance.Shafts.Count - 1) {
             _currentShaftIndex = -1;
+            ChangeGoal();
             Vector3 elevatorDepositPosition = new Vector3(transform.position.x, elevator.DepositLocation.position.y, transform.position.z);
             Move(elevatorDepositPosition);
             return;
@@ -53,7 +54,12 @@ public class ElevatorMiner : BaseMiner {
     protected override IEnumerator IECollect(int collectGold, float collectTime) {
         yield return new WaitForSeconds(collectTime);
 
-        CurrentGold = collectGold;
+        if (CurrentGold > 0 && CurrentGold < CollectCapacity) {
+            CurrentGold += collectGold;
+        } else {
+            CurrentGold = collectGold;
+        }
+
         _currentDeposit.RemoveGold(collectGold);
 
         yield return new WaitForSeconds(0.5f);
