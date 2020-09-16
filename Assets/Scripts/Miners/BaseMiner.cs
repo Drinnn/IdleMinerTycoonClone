@@ -51,4 +51,8 @@ public class BaseMiner : MonoBehaviour {
     protected virtual IEnumerator IECollect(int collectGold, float collectTime) {
         yield return null;
     }
+
+    protected virtual IEnumerator IEDeposit(int collectedGold, float depositTime) {
+        yield return null;
+    }
 }

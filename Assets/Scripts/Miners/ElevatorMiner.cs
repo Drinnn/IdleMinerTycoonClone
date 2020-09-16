@@ -37,6 +37,19 @@ public class ElevatorMiner : BaseMiner {
         StartCoroutine(IECollect(amountToCollect, collectTime));
     }
 
+    protected override void DepositGold() {
+        if (CurrentGold <= 0) {
+            _currentShaftIndex = -1;
+            ChangeGoal();
+            MoveToNextLocation();
+
+            return;
+        }
+
+        float depositTime = CurrentGold / CollectPerSecond;
+        StartCoroutine(IEDeposit(CurrentGold, depositTime));
+    }
+
     protected override IEnumerator IECollect(int collectGold, float collectTime) {
         yield return new WaitForSeconds(collectTime);
 
@@ -54,5 +67,16 @@ public class ElevatorMiner : BaseMiner {
         } else {
             MoveToNextLocation();
         }
+    }
+
+    protected override IEnumerator IEDeposit(int collectedGold, float depositTime) {
+        yield return new WaitForSeconds(depositTime);
+
+        elevator.ElevatorDeposit.DepositGold(CurrentGold);
+        CurrentGold = 0;
+        _currentShaftIndex = -1;
+
+        ChangeGoal();
+        MoveToNextLocation();
     }
 }
