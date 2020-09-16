@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda1be1c8edb24d4c90cfbd3c4c5b404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyNewShaftButton: {fileID: 0}
+  buyNewShaftButton: {fileID: 1729705603482331734}
   currentGoldText: {fileID: 2886920621308164869}
   currentLevelText: {fileID: 2886920620030598741}
 --- !u!114 &2886920620346067465

@@ -10,4 +10,20 @@ public class Deposit : MonoBehaviour {
     public void RemoveGold(int amount) {
         CurrentGold -= amount;
     }
+
+    public int CollectGold(BaseMiner miner) {
+        int minerCapacity = miner.CollectCapacity - miner.CurrentGold;
+        return EvaluateAmountToCollect(minerCapacity);
+    }
+
+    private int EvaluateAmountToCollect(int minerCollectCapacity) {
+        if (minerCollectCapacity <= CurrentGold)
+            return minerCollectCapacity;
+
+        return CurrentGold;
+    }
+
+    public bool CanCollectGold() {
+        return CurrentGold > 0;
+    }
 }

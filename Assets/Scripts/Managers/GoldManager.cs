@@ -12,7 +12,8 @@ public class GoldManager : Singleton<GoldManager> {
     }
 
     private void LoadGold() {
-        CurrentGold = PlayerPrefs.GetInt(GOLD_KEY, testGold);
+        // CurrentGold = PlayerPrefs.GetInt(GOLD_KEY, testGold);
+        CurrentGold = testGold;
     }
 
     public void AddGold(int amount) {

@@ -1110,12 +1110,6 @@ MonoBehaviour:
   _moveSpeed: 5
   _initialCollectCapacity: 200
   _goldCollectPerSecond: 50
---- !u!1 &1684590162 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1729705603482331734, guid: 243cb5466a611024299757148c549c9a,
-    type: 3}
-  m_PrefabInstance: {fileID: 2886920621178275952}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1741235114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,11 +1352,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2886920620346067464, guid: 243cb5466a611024299757148c549c9a,
-        type: 3}
-      propertyPath: buyNewShaftButton
-      value: 
-      objectReference: {fileID: 1684590162}
     - target: {fileID: 2886920620656736095, guid: 243cb5466a611024299757148c549c9a,
         type: 3}
       propertyPath: m_Camera
