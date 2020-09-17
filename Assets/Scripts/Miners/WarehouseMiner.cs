@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WarehouseMiner : BaseMiner {
@@ -14,13 +13,9 @@ public class WarehouseMiner : BaseMiner {
     private void Update() {
         if (Input.GetKeyDown(KeyCode.P)) {
             Rotate(-1);
+            _animator.SetBool(_walkingNoGold, true);
             Move(new Vector3(ElevatorDepositLocation.position.x, transform.position.y, transform.position.z));
         }
-    }
-
-    public override void Move(Vector3 newPosition) {
-        base.Move(newPosition);
-        _animator.SetBool(_walkingNoGold, true);
     }
 
     protected override void CollectGold() {
@@ -31,7 +26,6 @@ public class WarehouseMiner : BaseMiner {
             return;
         }
         _animator.SetBool(_walkingNoGold, false);
-        _animator.SetBool(_walkingWithGold, true);
 
         int currentGold = ElevatorDeposit.CollectGold(this);
         float collectTime = CollectCapacity / CollectPerSecond;
@@ -43,9 +37,36 @@ public class WarehouseMiner : BaseMiner {
 
         CurrentGold = collectGold;
         ElevatorDeposit.RemoveGold(collectGold);
+        _animator.SetBool(_walkingWithGold, true);
 
         Rotate(1);
         ChangeGoal();
         Move(new Vector3(WarehouseDepositLocation.position.x, transform.position.y, transform.position.z));
+    }
+
+    protected override void DepositGold() {
+        if (CurrentGold <= 0) {
+            Rotate(-1);
+            ChangeGoal();
+            Move(new Vector3(ElevatorDepositLocation.position.x, transform.position.y, transform.position.z));
+            return;
+        }
+
+        _animator.SetBool(_walkingWithGold, false);
+        _animator.SetBool(_walkingNoGold, false);
+
+        float depositTime = CurrentGold / CollectPerSecond;
+        StartCoroutine(IEDeposit(CurrentGold, depositTime));
+    }
+
+    protected override IEnumerator IEDeposit(int collectedGold, float depositTime) {
+        yield return new WaitForSeconds(depositTime);
+
+        GoldManager.Instance.AddGold(CurrentGold);
+        CurrentGold = 0;
+
+        Rotate(-1);
+        ChangeGoal();
+        Move(new Vector3(ElevatorDepositLocation.position.x, transform.position.y, transform.position.z));
     }
 }

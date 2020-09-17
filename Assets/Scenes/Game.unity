@@ -1079,7 +1079,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075396428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.748, y: -0.183, z: 0}
+  m_LocalPosition: {x: -0.454, y: -0.183, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1401103180}
@@ -1412,6 +1412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1401103180}
   - component: {fileID: 1401103181}
+  - component: {fileID: 1401103182}
   m_Layer: 0
   m_Name: Warehouse
   m_TagString: Untagged
@@ -1453,6 +1454,19 @@ MonoBehaviour:
   elevatorLocation: {fileID: 1075396429}
   warehouseDepositLocation: {fileID: 1117027769}
   miners: []
+--- !u!114 &1401103182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401103179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3998ba1bd39914db620ae4f8a68663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalGoldText: {fileID: 394860022}
 --- !u!1 &1505900149
 GameObject:
   m_ObjectHideFlags: 0
