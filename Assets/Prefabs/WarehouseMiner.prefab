@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1850561102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1850561103}
+  m_Layer: 0
+  m_Name: BarPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1850561103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850561102}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.177, y: -0.058, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1191834206603682602}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1191834204819635879
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +838,7 @@ GameObject:
   - component: {fileID: 1191834206603682596}
   - component: {fileID: 1191834206603682597}
   - component: {fileID: 2660768686816197088}
+  - component: {fileID: 687713158}
   m_Layer: 0
   m_Name: WarehouseMiner
   m_TagString: Untagged
@@ -828,6 +859,7 @@ Transform:
   m_Children:
   - {fileID: 1191834204840726404}
   - {fileID: 1191834204937767171}
+  - {fileID: 1850561103}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -950,6 +982,21 @@ MonoBehaviour:
   _moveSpeed: 5
   _initialCollectCapacity: 200
   _goldCollectPerSecond: 50
+--- !u!114 &687713158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191834206603682598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec744b19a487df042a7a218ad3166de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBarPrefab: {fileID: 6312838124988189989, guid: c47f82abb592a5c4d9d6d583fda884a1,
+    type: 3}
+  loadingBarPosition: {fileID: 1850561103}
 --- !u!1 &1191834206801638917
 GameObject:
   m_ObjectHideFlags: 0

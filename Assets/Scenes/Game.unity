@@ -1220,6 +1220,36 @@ Transform:
   m_Father: {fileID: 1505900150}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1274546311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274546312}
+  m_Layer: 0
+  m_Name: BarPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1274546312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274546311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.022, y: -0.162, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1672492774}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1314186190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,6 +1660,7 @@ GameObject:
   - component: {fileID: 1672492772}
   - component: {fileID: 1672492771}
   - component: {fileID: 1672492775}
+  - component: {fileID: 1672492776}
   m_Layer: 0
   m_Name: ElevatorMiner
   m_TagString: Untagged
@@ -1750,6 +1781,7 @@ Transform:
   m_Children:
   - {fileID: 2109911922}
   - {fileID: 1314186191}
+  - {fileID: 1274546312}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1769,6 +1801,21 @@ MonoBehaviour:
   _initialCollectCapacity: 200
   _goldCollectPerSecond: 50
   elevator: {fileID: 487005122}
+--- !u!114 &1672492776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672492770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec744b19a487df042a7a218ad3166de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBarPrefab: {fileID: 6312838124988189989, guid: c47f82abb592a5c4d9d6d583fda884a1,
+    type: 3}
+  loadingBarPosition: {fileID: 1274546312}
 --- !u!1 &1741235114
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,11 @@ public class WarehouseMiner : BaseMiner {
     private readonly int _walkingNoGold = Animator.StringToHash("WalkingNoGold");
     private readonly int _walkingWithGold = Animator.StringToHash("WalkingWithGold");
 
+    private LoadBar _loadBar;
+
+    private void Start() {
+        _loadBar = GetComponent<LoadBar>();
+    }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.P)) {
@@ -29,19 +34,11 @@ public class WarehouseMiner : BaseMiner {
 
         int currentGold = ElevatorDeposit.CollectGold(this);
         float collectTime = CollectCapacity / CollectPerSecond;
+
+        _loadBar.BarContainer.localScale = new Vector3(-1, 1, 1);
+        OnLoading?.Invoke(this, collectTime);
+
         StartCoroutine(IECollect(currentGold, collectTime));
-    }
-
-    protected override IEnumerator IECollect(int collectGold, float collectTime) {
-        yield return new WaitForSeconds(collectTime);
-
-        CurrentGold = collectGold;
-        ElevatorDeposit.RemoveGold(collectGold);
-        _animator.SetBool(_walkingWithGold, true);
-
-        Rotate(1);
-        ChangeGoal();
-        Move(new Vector3(WarehouseDepositLocation.position.x, transform.position.y, transform.position.z));
     }
 
     protected override void DepositGold() {
@@ -56,6 +53,10 @@ public class WarehouseMiner : BaseMiner {
         _animator.SetBool(_walkingNoGold, false);
 
         float depositTime = CurrentGold / CollectPerSecond;
+
+        _loadBar.BarContainer.localScale = new Vector3(1, 1, 1);
+        OnLoading?.Invoke(this, depositTime);
+
         StartCoroutine(IEDeposit(CurrentGold, depositTime));
     }
 
@@ -68,5 +69,17 @@ public class WarehouseMiner : BaseMiner {
         Rotate(-1);
         ChangeGoal();
         Move(new Vector3(ElevatorDepositLocation.position.x, transform.position.y, transform.position.z));
+    }
+
+    protected override IEnumerator IECollect(int collectGold, float collectTime) {
+        yield return new WaitForSeconds(collectTime);
+
+        CurrentGold = collectGold;
+        ElevatorDeposit.RemoveGold(collectGold);
+        _animator.SetBool(_walkingWithGold, true);
+
+        Rotate(1);
+        ChangeGoal();
+        Move(new Vector3(WarehouseDepositLocation.position.x, transform.position.y, transform.position.z));
     }
 }

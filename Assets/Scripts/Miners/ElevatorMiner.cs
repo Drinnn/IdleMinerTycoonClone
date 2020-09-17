@@ -35,6 +35,9 @@ public class ElevatorMiner : BaseMiner {
 
         int amountToCollect = _currentDeposit.CollectGold(this);
         float collectTime = amountToCollect / CollectPerSecond;
+
+        OnLoading?.Invoke(this, collectTime);
+
         StartCoroutine(IECollect(amountToCollect, collectTime));
     }
 
@@ -48,6 +51,9 @@ public class ElevatorMiner : BaseMiner {
         }
 
         float depositTime = CurrentGold / CollectPerSecond;
+
+        OnLoading?.Invoke(this, depositTime);
+
         StartCoroutine(IEDeposit(CurrentGold, depositTime));
     }
 

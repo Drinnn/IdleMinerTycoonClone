@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
 public class BaseMiner : MonoBehaviour {
+    public static Action<BaseMiner, float> OnLoading;
+
     public float MoveSpeed { get; set; }
     public int CurrentGold { get; set; }
     public int CollectCapacity { get; set; }
